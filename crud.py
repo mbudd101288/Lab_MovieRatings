@@ -9,6 +9,24 @@ def create_user(email, password):
 
     return user
 
+def ret_all_users():
+    
+    users = User.query.all()
+    
+    return users
+
+
+def get_user_by_id(user_id):
+
+    user = User.query.get(user_id)
+
+    return user
+
+def get_user_by_email(email):
+
+    return User.query.filter_by(email=email).first()
+
+
 def create_movie(title, overview, release_date, poster_path):
     """Create and return a new movie."""
 
@@ -17,8 +35,17 @@ def create_movie(title, overview, release_date, poster_path):
     return movie
 
 def ret_all_movies():
-    movie = Movie.query.all()
+    """Return a list of movie objects"""
+    
+    movies = Movie.query.all()
+    return movies
+
+def get_movie_by_id(movie_id):
+
+    movie = Movie.query.get(movie_id)
+
     return movie
+
 
 def create_rating(user, movie, score):
     """Create and return a new rating"""
